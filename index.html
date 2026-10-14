@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heinola Winter Party 2026</title>
+  <title>Heinolan Talvibileet 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -102,10 +102,36 @@
       z-index: 2;
     }
 
+    /* Top Language Switcher Bar */
+    .lang-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: rgba(0, 242, 254, 0.2);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
     /* Hero Header Section */
     .hero {
       text-align: center;
-      padding: 28px 16px 20px;
+      padding: 24px 16px 20px;
       background: rgba(15, 23, 42, 0.6);
       backdrop-filter: blur(16px);
       border: 1px solid var(--border-color);
@@ -132,7 +158,7 @@
 
     .hero h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 900;
       line-height: 1.15;
       background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%);
@@ -154,7 +180,7 @@
       gap: 10px;
       color: var(--text-main);
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     /* Countdown Styling */
@@ -386,7 +412,6 @@
       position: absolute;
       left: -26px;
       top: 4px;
-      width: 100px;
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -456,14 +481,20 @@
 
   <div class="app-container">
 
+    <!-- Language Selector Toggle (FI & RU Only) -->
+    <div class="lang-bar">
+      <button class="lang-btn active" id="btn-fi" onclick="setLanguage('fi')">🇫🇮 FI</button>
+      <button class="lang-btn" id="btn-ru" onclick="setLanguage('ru')">🇷🇺 RU</button>
+    </div>
+
     <!-- Hero Header -->
     <header class="hero">
-      <div class="location-badge">📍 Heinola, Finland</div>
-      <h1>WINTER FRIENDS PARTY</h1>
-      <p>Cozy vibes, beats, refreshing drinks & good memories!</p>
+      <div class="location-badge">📍 Heinola, Suomi</div>
+      <h1 id="hero-title">HEINOLAN TALVIBILEET</h1>
+      <p id="hero-subtitle">Lämmin tunnelma, hyvää musiikkia, raikkaita juomia ja parasta seuraa!</p>
       
       <div class="event-date-bar">
-        <span>📅 Saturday 19.12.2026</span>
+        <span id="event-date">📅 Lauantai 19.12.2026</span>
         <span>•</span>
         <span>⏰ 18:00</span>
       </div>
@@ -472,39 +503,39 @@
       <div class="countdown-grid">
         <div class="time-box">
           <span class="num" id="cd-days">00</span>
-          <span class="lbl">Days</span>
+          <span class="lbl" id="lbl-days">Päivää</span>
         </div>
         <div class="time-box">
           <span class="num" id="cd-hours">00</span>
-          <span class="lbl">Hours</span>
+          <span class="lbl" id="lbl-hours">Tuntia</span>
         </div>
         <div class="time-box">
           <span class="num" id="cd-mins">00</span>
-          <span class="lbl">Mins</span>
+          <span class="lbl" id="lbl-mins">Minuuttia</span>
         </div>
         <div class="time-box">
           <span class="num" id="cd-secs">00</span>
-          <span class="lbl">Secs</span>
+          <span class="lbl" id="lbl-secs">Sekuntia</span>
         </div>
       </div>
     </header>
 
-    <!-- Navigation Tabs (Only Music, Menu, Details) -->
+    <!-- Navigation Tabs -->
     <nav class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab('music')">🎵 Music</button>
-      <button class="tab-btn" onclick="switchTab('menu')">🍕 Menu</button>
-      <button class="tab-btn" onclick="switchTab('info')">📍 Details</button>
+      <button class="tab-btn active" id="tab-btn-music" onclick="switchTab('music')">🎵 Musiikki</button>
+      <button class="tab-btn" id="tab-btn-menu" onclick="switchTab('menu')">🍕 Menu</button>
+      <button class="tab-btn" id="tab-btn-info" onclick="switchTab('info')">📍 Tiedot</button>
     </nav>
 
     <!-- TAB 1: MUSIC & PLAYLIST -->
     <div id="tab-music" class="tab-content active">
       <div class="content-card">
-        <div class="card-title">🎧 Party Playlist Requests</div>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Add your favorite track or upvote song requests for DJ night!</p>
+        <div class="card-title" id="music-title">🎧 Soitolistan toiveet</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;" id="music-subtitle">Lisää lempibiisisi tai äänestä muiden toiveita bileisiin!</p>
 
         <div style="display:flex; gap:6px; margin-bottom:14px;">
-          <input type="text" id="songInput" class="input-field" placeholder="Song title & Artist...">
-          <button onclick="addSong()" class="btn-submit" style="white-space:nowrap;">Add</button>
+          <input type="text" id="songInput" class="input-field" placeholder="Kappale ja esittäjä...">
+          <button onclick="addSong()" class="btn-submit" style="white-space:nowrap;" id="btn-add-song">Lisää</button>
         </div>
 
         <div id="songList">
@@ -516,29 +547,29 @@
     <!-- TAB 2: FOOD & DRINK MENU -->
     <div id="tab-menu" class="tab-content">
       <div class="content-card">
-        <div class="card-title">🍲 Snacks & Beverages</div>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Fresh drinks, hot brews, and delicious Finnish comfort foods.</p>
+        <div class="card-title" id="menu-title">🍲 Tarjoilut & Juomat</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;" id="menu-subtitle">Raikkaita juomia, lämmintä kahvia ja suomalaista purtavaa.</p>
         
         <div class="menu-grid">
           <div class="menu-item">
             <div class="menu-icon">🍋</div>
-            <h4>Lemonade</h4>
-            <p>Freshly squeezed chilled sparkling & citrus lemonade</p>
+            <h4 id="m1-title">Limonadi</h4>
+            <p id="m1-desc">Raikasta ja viileää sitrus- & kuplalimonadia</p>
           </div>
           <div class="menu-item">
             <div class="menu-icon">🌭</div>
-            <h4>Grillimakkara</h4>
-            <p>Sausages grilled outside in the crisp winter air</p>
+            <h4 id="m2-title">Grillimakkara</h4>
+            <p id="m2-desc">Kuumaa grillimakkaraa raikkaassa talviilmassa</p>
           </div>
           <div class="menu-item">
             <div class="menu-icon">🥐</div>
-            <h4>Karjalanpiirakka</h4>
-            <p>Karelian pies with fresh munavoi (egg butter)</p>
+            <h4 id="m3-title">Karjalanpiirakka</h4>
+            <p id="m3-desc">Perinteisiä karjalanpiirakoita ja tuoretta munavoita</p>
           </div>
           <div class="menu-item">
             <div class="menu-icon">☕</div>
-            <h4>Coffee & Tea</h4>
-            <p>Hot freshly brewed dark roast coffee & herbal teas</p>
+            <h4 id="m4-title">Kahvi & Tee</h4>
+            <p id="m4-desc">Tuoretta tummapaahtoista kahvia ja yrttiteetä</p>
           </div>
         </div>
       </div>
@@ -547,39 +578,39 @@
     <!-- TAB 3: LOCATION, TIMELINE & DETAILS -->
     <div id="tab-info" class="tab-content">
       <div class="content-card">
-        <div class="card-title">📍 Party Location</div>
-        <p style="font-size:0.9rem; margin-bottom:8px;"><strong>Location:</strong> Heinola, Päijät-Häme, Finland</p>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">Exact address sent via private message.</p>
+        <div class="card-title" id="info-title">📍 Bilesijainti</div>
+        <p style="font-size:0.9rem; margin-bottom:8px;"><strong id="info-loc-lbl">Sijainti:</strong> Heinola, Päijät-Häme, Suomi</p>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;" id="info-addr-note">Tarkka osoite lähetetään yksityisviestillä.</p>
 
         <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; margin-bottom:12px; border:1px solid var(--border-color);">
-          <h5 style="color:var(--primary); margin-bottom:4px;">🚗 Parking & Bus</h5>
-          <p style="font-size:0.8rem; color:var(--text-muted);">Free street parking available. Express buses from Lahti run hourly until midnight.</p>
+          <h5 style="color:var(--primary); margin-bottom:4px;" id="info-parking-title">🚗 Pysäköinti & Bussit</h5>
+          <p style="font-size:0.8rem; color:var(--text-muted);" id="info-parking-desc">Ilmainen kadunvarsipysäköinti. Pikavuorobussit Lahdesta kulkevat tunneittain.</p>
         </div>
 
         <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; border:1px solid var(--border-color);">
-          <h5 style="color:var(--accent-pink); margin-bottom:4px;">❄️ What to bring?</h5>
-          <p style="font-size:0.8rem; color:var(--text-muted);">Warm winter jacket for outdoors, sauna towel, swim attire if brave enough for cold dips!</p>
+          <h5 style="color:var(--accent-pink); margin-bottom:4px;" id="info-bring-title">❄️ Mitä ottaa mukaan?</h5>
+          <p style="font-size:0.8rem; color:var(--text-muted);" id="info-bring-desc">Lämmin talvitakki ulkoiluun, saunapyyhe ja uimapuku rohkeille vilvoittelijoille!</p>
         </div>
       </div>
 
       <div class="content-card">
-        <div class="card-title">⏰ Evening Schedule</div>
+        <div class="card-title" id="sched-title">⏰ Illan aikataulu</div>
         <div class="timeline">
           <div class="timeline-item">
             <div class="time-lbl">18:00</div>
-            <div class="timeline-desc">Arrival, Lemonade & Welcome Toast</div>
+            <div class="timeline-desc" id="s1-desc">Saapuminen, limonadit & tervetuloomalja</div>
           </div>
           <div class="timeline-item">
             <div class="time-lbl">19:30</div>
-            <div class="timeline-desc">Snack Feast & Sauna Option</div>
+            <div class="timeline-desc" id="s2-desc">Iltapala & sauna lämpimänä</div>
           </div>
           <div class="timeline-item">
             <div class="time-lbl">21:00</div>
-            <div class="timeline-desc">Music & Open Lounge</div>
+            <div class="timeline-desc" id="s3-desc">Musiikkia & rentoa oleilua</div>
           </div>
           <div class="timeline-item">
             <div class="time-lbl">00:00</div>
-            <div class="timeline-desc">Midnight Celebration & Late Night Sauna</div>
+            <div class="timeline-desc" id="s4-desc">Keskiyön juhla & myöhäissauna</div>
           </div>
         </div>
       </div>
@@ -590,12 +621,154 @@
   <!-- Bottom Quick Links Floating Bar -->
   <div class="bottom-bar">
     <div class="app-container">
-      <a href="https://maps.google.com/?q=Heinola+Finland" target="_blank" class="btn-secondary">🗺️ Open Map</a>
-      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn-secondary">⬆️ Top</button>
+      <a href="https://maps.google.com/?q=Heinola+Finland" target="_blank" class="btn-secondary" id="btn-map">🗺️ Avaa kartta</a>
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn-secondary" id="btn-top">⬆️ Ylös</button>
     </div>
   </div>
 
   <script>
+    /* Translations Data (Finnish & Russian Only) */
+    const translations = {
+      fi: {
+        title: "Heinolan Talvibileet 2026",
+        heroTitle: "HEINOLAN TALVIBILEET",
+        heroSubtitle: "Lämmin tunnelma, hyvää musiikkia, raikkaita juomia ja parasta seuraa!",
+        eventDate: "📅 Lauantai 19.12.2026",
+        lblDays: "Päivää",
+        lblHours: "Tuntia",
+        lblMins: "Minuuttia",
+        lblSecs: "Sekuntia",
+        tabMusic: "🎵 Musiikki",
+        tabMenu: "🍕 Menu",
+        tabInfo: "📍 Tiedot",
+        musicTitle: "🎧 Soitolistan toiveet",
+        musicSubtitle: "Lisää lempibiisisi tai äänestä muiden toiveita bileisiin!",
+        songInputPh: "Kappale ja esittäjä...",
+        btnAddSong: "Lisää",
+        menuTitle: "🍲 Tarjoilut & Juomat",
+        menuSubtitle: "Raikkaita juomia, lämmintä kahvia ja suomalaista purtavaa.",
+        m1Title: "Limonadi",
+        m1Desc: "Raikasta ja viileää sitrus- & kuplalimonadia",
+        m2Title: "Grillimakkara",
+        m2Desc: "Kuumaa grillimakkaraa raikkaassa talviilmassa",
+        m3Title: "Karjalanpiirakka",
+        m3Desc: "Perinteisiä karjalanpiirakoita ja tuoretta munavoita",
+        m4Title: "Kahvi & Tee",
+        m4Desc: "Tuoretta tummapaahtoista kahvia ja yrttiteetä",
+        infoTitle: "📍 Bilesijainti",
+        infoLocLbl: "Sijainti:",
+        infoAddrNote: "Tarkka osoite lähetetään yksityisviestillä.",
+        infoParkingTitle: "🚗 Pysäköinti & Bussit",
+        infoParkingDesc: "Ilmainen kadunvarsipysäköinti. Pikavuorobussit Lahdesta kulkevat tunneittain.",
+        infoBringTitle: "❄️ Mitä ottaa mukaan?",
+        infoBringDesc: "Lämmin talvitakki ulkoiluun, saunapyyhe ja uimapuku rohkeille vilvoittelijoille!",
+        schedTitle: "⏰ Illan aikataulu",
+        s1Desc: "Saapuminen, limonadit & tervetuloomalja",
+        s2Desc: "Iltapala & sauna lämpimänä",
+        s3Desc: "Musiikkia & rentoa oleilua",
+        s4Desc: "Keskiyön juhla & myöhäissauna",
+        btnMap: "🗺️ Avaa kartta",
+        btnTop: "⬆️ Ylös"
+      },
+      ru: {
+        title: "Зимняя вечеринка в Хейноле 2026",
+        heroTitle: "ЗИМНЯЯ ВЕЧЕРИНКА В ХЕЙНОЛЕ",
+        heroSubtitle: "Уютная атмосфера, классная музыка, освежающие напитки и отличная компания!",
+        eventDate: "📅 Суббота 19.12.2026",
+        lblDays: "Дней",
+        lblHours: "Часов",
+        lblMins: "Минут",
+        lblSecs: "Секунд",
+        tabMusic: "🎵 Музыка",
+        tabMenu: "🍕 Меню",
+        tabInfo: "📍 Детали",
+        musicTitle: "🎧 Пожелания к плейлисту",
+        musicSubtitle: "Добавьте любимый трек или проголосуйте за песни друзей!",
+        songInputPh: "Название песни и исполнитель...",
+        btnAddSong: "Добавить",
+        menuTitle: "🍲 Закуски и Напитки",
+        menuSubtitle: "Освежающие напитки, горячий кофе и финские угощения.",
+        m1Title: "Лимонад",
+        m1Desc: "Освежающий прохладный цитрусовый и газированный лимонад",
+        m2Title: "Сосиски на гриле",
+        m2Desc: "Горячие сосиски, поджаренные на свежем зимнем воздухе",
+        m3Title: "Карельские пирожки",
+        m3Desc: "Традиционные карельские пирожки со свежим яичным маслом",
+        m4Title: "Кофе и Чай",
+        m4Desc: "Свежесваренный темный кофе и травяной чай",
+        infoTitle: "📍 Место проведения",
+        infoLocLbl: "Локация:",
+        infoAddrNote: "Точный адрес будет отправлен в личном сообщении.",
+        infoParkingTitle: "🚗 Парковка и Автобусы",
+        infoParkingDesc: "Бесплатная уличная парковка. Экспресс-автобусы из Лахти ходят каждый час.",
+        infoBringTitle: "❄️ Что взять с собой?",
+        infoBringDesc: "Теплую зимнюю куртку, полотенце для сауны и купальник для самых смелых!",
+        schedTitle: "⏰ Программа вечера",
+        s1Desc: "Сбор гостей, лимонад и приветственный тост",
+        s2Desc: "Ужин и горячая сауна",
+        s3Desc: "Музыка и душевное общение",
+        s4Desc: "Полночный тост и ночная сауна",
+        btnMap: "🗺️ Открыть карту",
+        btnTop: "⬆️ Наверх"
+      }
+    };
+
+    let currentLang = 'fi';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+
+      document.title = t.title;
+      document.getElementById('btn-fi').className = `lang-btn ${lang === 'fi' ? 'active' : ''}`;
+      document.getElementById('btn-ru').className = `lang-btn ${lang === 'ru' ? 'active' : ''}`;
+
+      document.getElementById('hero-title').innerText = t.heroTitle;
+      document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+      document.getElementById('event-date').innerText = t.eventDate;
+      document.getElementById('lbl-days').innerText = t.lblDays;
+      document.getElementById('lbl-hours').innerText = t.lblHours;
+      document.getElementById('lbl-mins').innerText = t.lblMins;
+      document.getElementById('lbl-secs').innerText = t.lblSecs;
+
+      document.getElementById('tab-btn-music').innerText = t.tabMusic;
+      document.getElementById('tab-btn-menu').innerText = t.tabMenu;
+      document.getElementById('tab-btn-info').innerText = t.tabInfo;
+
+      document.getElementById('music-title').innerText = t.musicTitle;
+      document.getElementById('music-subtitle').innerText = t.musicSubtitle;
+      document.getElementById('songInput').placeholder = t.songInputPh;
+      document.getElementById('btn-add-song').innerText = t.btnAddSong;
+
+      document.getElementById('menu-title').innerText = t.menuTitle;
+      document.getElementById('menu-subtitle').innerText = t.menuSubtitle;
+      document.getElementById('m1-title').innerText = t.m1Title;
+      document.getElementById('m1-desc').innerText = t.m1Desc;
+      document.getElementById('m2-title').innerText = t.m2Title;
+      document.getElementById('m2-desc').innerText = t.m2Desc;
+      document.getElementById('m3-title').innerText = t.m3Title;
+      document.getElementById('m3-desc').innerText = t.m3Desc;
+      document.getElementById('m4-title').innerText = t.m4Title;
+      document.getElementById('m4-desc').innerText = t.m4Desc;
+
+      document.getElementById('info-title').innerText = t.infoTitle;
+      document.getElementById('info-loc-lbl').innerText = t.infoLocLbl;
+      document.getElementById('info-addr-note').innerText = t.infoAddrNote;
+      document.getElementById('info-parking-title').innerText = t.infoParkingTitle;
+      document.getElementById('info-parking-desc').innerText = t.infoParkingDesc;
+      document.getElementById('info-bring-title').innerText = t.infoBringTitle;
+      document.getElementById('info-bring-desc').innerText = t.infoBringDesc;
+
+      document.getElementById('sched-title').innerText = t.schedTitle;
+      document.getElementById('s1-desc').innerText = t.s1Desc;
+      document.getElementById('s2-desc').innerText = t.s2Desc;
+      document.getElementById('s3-desc').innerText = t.s3Desc;
+      document.getElementById('s4-desc').innerText = t.s4Desc;
+
+      document.getElementById('btn-map').innerText = t.btnMap;
+      document.getElementById('btn-top').innerText = t.btnTop;
+    }
+
     /* 1. Snow Animation Generator */
     function createSnow() {
       const container = document.getElementById('snowContainer');
@@ -686,7 +859,7 @@
       if (val) {
         const parts = val.split('-');
         const title = parts[0] ? parts[0].trim() : val;
-        const artist = parts[1] ? parts[1].trim() : 'Requested Guest Track';
+        const artist = parts[1] ? parts[1].trim() : 'Guest';
 
         songList.push({ title, artist, votes: 1 });
         localStorage.setItem('heinola_songs', JSON.stringify(songList));
