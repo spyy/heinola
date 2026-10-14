@@ -530,13 +530,7 @@
     <!-- TAB 1: MUSIC & PLAYLIST -->
     <div id="tab-music" class="tab-content active">
       <div class="content-card">
-        <div class="card-title" id="music-title">🎧 Soitolistan toiveet</div>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;" id="music-subtitle">Lisää lempibiisisi tai äänestä muiden toiveita bileisiin!</p>
-
-        <div style="display:flex; gap:6px; margin-bottom:14px;">
-          <input type="text" id="songInput" class="input-field" placeholder="Kappale ja esittäjä...">
-          <button onclick="addSong()" class="btn-submit" style="white-space:nowrap;" id="btn-add-song">Lisää</button>
-        </div>
+        <div class="card-title" id="music-title">Esittäjälista</div>
 
         <div id="songList">
           <!-- Dynamically Rendered -->
@@ -825,9 +819,9 @@
 
     /* 4. Music Song Board & Voting */
     let songList = JSON.parse(localStorage.getItem('heinola_songs')) || [
-      { title: "Cha Cha Cha", artist: "Käärijä", votes: 8 },
-      { title: "Blinding Lights", artist: "The Weeknd", votes: 5 },
-      { title: "Sandstorm", artist: "Darude", votes: 12 }
+      { title: "Latinoo", artist: "Huantsu", votes: 8 },
+      { title: "Cahon ja kitara", artist: "Arska ja Pyy", votes: 3 },
+      { title: "Rautalankaa", artist: "Reima ja Anna", votes: 12 }
     ];
 
     function renderSongs() {
