@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heinola Winter Party 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(22, 28, 45, 0.75);
+      --bg-card-hover: rgba(30, 39, 64, 0.85);
+      --primary: #00f2fe;
+      --primary-glow: rgba(0, 242, 254, 0.4);
+      --secondary: #4facfe;
+      --accent-pink: #ff2a85;
+      --accent-purple: #8a2be2;
+      --text-main: #f0f4f8;
+      --text-muted: #94a3b8;
+      --border-color: rgba(255, 255, 255, 0.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding-bottom: 90px;
+    }
+
+    /* Ambient Glow Background & Snow Effect */
+    .bg-glow-1 {
+      position: fixed;
+      top: -10%;
+      left: -20%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, var(--accent-purple) 0%, rgba(0,0,0,0) 70%);
+      opacity: 0.35;
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-glow-2 {
+      position: fixed;
+      bottom: 10%;
+      right: -20%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, var(--primary) 0%, rgba(0,0,0,0) 70%);
+      opacity: 0.25;
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .snow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .snowflake {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) translateX(0);
+      }
+      100% {
+        transform: translateY(105vh) translateX(30px);
+      }
+    }
+
+    .app-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Hero Header Section */
+    .hero {
+      text-align: center;
+      padding: 28px 16px 20px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 242, 254, 0.12);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .event-date-bar {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Countdown Styling */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 10px 4px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .time-box .num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+
+    .time-box .lbl {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Primary RSVP Section */
+    .rsvp-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .rsvp-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .input-field, select {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .input-field:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      border: none;
+      border-radius: 12px;
+      color: #090d16;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px var(--primary-glow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      margin-top: 6px;
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    /* Guest Counter & List Pill */
+    .guest-counter {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .guest-names {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      max-height: 50px;
+      overflow-y: auto;
+    }
+
+    /* Tabbed Navigation Bar */
+    .nav-tabs {
+      display: flex;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      padding: 4px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+      gap: 4px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 8px;
+      background: transparent;
+      border: none;
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .tab-btn.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Tab Content Containers */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Generic Card */
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+    }
+
+    /* Music Section */
+    .song-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    .song-info {
+      flex: 1;
+    }
+
+    .song-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    .song-artist {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .vote-btn {
+      background: rgba(0, 242, 254, 0.15);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .vote-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* Food & Drink Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .menu-item {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .menu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .menu-item h4 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .menu-item p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Dance Floor Poll */
+    .dance-poll-option {
+      margin-bottom: 12px;
+    }
+
+    .poll-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .poll-bar-bg {
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .poll-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--accent-pink));
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    /* Timeline / Schedule */
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -26px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 8px var(--primary);
+    }
+
+    .time-lbl {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Party Wall / Posts */
+    .wall-post {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .post-user {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .post-msg {
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+
+    /* Fixed Bottom Action Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(9, 13, 22, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-color);
+      padding: 10px 16px;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bottom-bar .app-container {
+      width: 100%;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Animated Lights & Falling Snow -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="snow-container" id="snowContainer"></div>
+
+  <div class="app-container">
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="location-badge">📍 Heinola, Finland</div>
+      <h1>WINTER FRIENDS PARTY</h1>
+      <p>Cozy vibes, beats, hot drinks & good memories!</p>
+      
+      <div class="event-date-bar">
+        <span>📅 Saturday 19.12.2026</span>
+        <span>•</span>
+        <span>⏰ 18:00</span>
+      </div>
+
+      <!-- Live Countdown -->
+      <div class="countdown-grid">
+        <div class="time-box">
+          <span class="num" id="cd-days">00</span>
+          <span class="lbl">Days</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="cd-hours">00</span>
+          <span class="lbl">Hours</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="cd-mins">00</span>
+          <span class="lbl">Mins</span>
+        </div>
+        <div class="time-box">
+          <span class="num" id="cd-secs">00</span>
+          <span class="lbl">Secs</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-card">
+      <h2>✍️ RSVP & Attendance</h2>
+      <form id="rsvpForm">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="guestName" class="input-field" placeholder="e.g. Pekka & Milla" required>
+        </div>
+        <div class="form-group">
+          <label>Are you joining?</label>
+          <select id="guestStatus">
+            <option value="Yes">Hell yes! Count me in 🥳</option>
+            <option value="Maybe">Maybe (Will confirm soon) 🤔</option>
+            <option value="No">Can't make it 😢</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Dietary Needs / Requests</label>
+          <input type="text" id="guestDiet" class="input-field" placeholder="e.g. Vegetarian, Gluten-free">
+        </div>
+        <button type="submit" class="btn-submit">Confirm Attendance</button>
+      </form>
+
+      <div class="guest-counter">
+        <span>Attending Friends:</span>
+        <strong id="attendeeCount" style="color:var(--primary);">0 Going</strong>
+      </div>
+      <div class="guest-names" id="guestListDisplay">No RSVPs yet. Be the first!</div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('music')">🎵 Music</button>
+      <button class="tab-btn" onclick="switchTab('menu')">🍕 Menu</button>
+      <button class="tab-btn" onclick="switchTab('dance')">💃 Dance</button>
+      <button class="tab-btn" onclick="switchTab('info')">📍 Details</button>
+      <button class="tab-btn" onclick="switchTab('wall')">💬 Wall</button>
+    </nav>
+
+    <!-- TAB 1: MUSIC & PLAYLIST -->
+    <div id="tab-music" class="tab-content active">
+      <div class="content-card">
+        <div class="card-title">🎧 Party Playlist Requests</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Add your favorite track or upvote song requests for DJ night!</p>
+
+        <div style="display:flex; gap:6px; margin-bottom:14px;">
+          <input type="text" id="songInput" class="input-field" placeholder="Song title & Artist...">
+          <button onclick="addSong()" class="btn-submit" style="width: auto; padding:0 16px;">Add</button>
+        </div>
+
+        <div id="songList">
+          <!-- Dynamically Rendered -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: FOOD & DRINK MENU -->
+    <div id="tab-menu" class="tab-content">
+      <div class="content-card">
+        <div class="card-title">🍲 Winter Snacks & Drinks</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Warm drinks for the Heinola cold & delicious Finnish comfort foods.</p>
+        
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-icon">🍷</div>
+            <h4>Hot Glögi</h4>
+            <p>Traditional Finnish spiced glögi with almonds & raisins</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon">🌭</div>
+            <h4>Grillimakkara</h4>
+            <p>Sausages grilled outside in the crisp winter air</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon">🥐</div>
+            <h4>Karjalanpiirakka</h4>
+            <p>Karelian pies with fresh munavoi (egg butter)</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon">🍸</div>
+            <h4>Cocktail Bar</h4>
+            <p>Long Drink (Lonkero), craft beers & mocktails</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: DANCE FLOOR & SCHEDULE -->
+    <div id="tab-dance" class="tab-content">
+      <div class="content-card">
+        <div class="card-title">🕺 Dance Floor Music Style Poll</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Click a style to vote for what dominates the dance floor late night!</p>
+        
+        <div id="dancePoll">
+          <!-- Dynamically Populated -->
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-title">⏰ Evening Schedule</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time-lbl">18:00</div>
+            <div class="timeline-desc">Arrival, Hot Glögi & Welcome Toast</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time-lbl">19:30</div>
+            <div class="timeline-desc">Snack Feast & Sauna Option</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time-lbl">21:00</div>
+            <div class="timeline-desc">DJ Setup & Open Dance Floor</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time-lbl">00:00</div>
+            <div class="timeline-desc">Midnight Celebration & Late Night Sauna</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: LOCATION & DETAILS -->
+    <div id="tab-info" class="tab-content">
+      <div class="content-card">
+        <div class="card-title">📍 Party Location</div>
+        <p style="font-size:0.9rem; margin-bottom:8px;"><strong>Location:</strong> Heinola, Päijät-Häme, Finland</p>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;"> exact address sent via private message to confirmed RSVPs.</p>
+
+        <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; margin-bottom:12px; border:1px solid var(--border-color);">
+          <h5 style="color:var(--primary); margin-bottom:4px;">🚗 Parking & Bus</h5>
+          <p style="font-size:0.8rem; color:var(--text-muted);">Free street parking available. Express buses from Lahti run hourly until midnight.</p>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; border:1px solid var(--border-color);">
+          <h5 style="color:var(--accent-pink); margin-bottom:4px;">❄️ What to bring?</h5>
+          <p style="font-size:0.8rem; color:var(--text-muted);">Warm winter jacket for outdoors, sauna towel, swim attire if brave enough for cold dips!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: LIVE PARTY WALL -->
+    <div id="tab-wall" class="tab-content">
+      <div class="content-card">
+        <div class="card-title">💬 Message & Photo Wall</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Share hype messages or upload photos before/during the party!</p>
+
+        <div class="form-group">
+          <input type="text" id="wallUser" class="input-field" placeholder="Your name" style="margin-bottom:8px;">
+          <textarea id="wallMsg" class="input-field" placeholder="Write a message..." rows="2" style="resize:none; margin-bottom:8px;"></textarea>
+          
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+            <input type="file" id="wallImgInput" accept="image/*" style="display:none;" onchange="handleImageSelect(event)">
+            <button type="button" onclick="document.getElementById('wallImgInput').click()" class="btn-secondary" style="padding:8px 12px; font-size:0.75rem;">📷 Add Photo</button>
+            <span id="imgFileName" style="font-size:0.7rem; color:var(--text-muted); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
+            <button type="button" onclick="postToWall()" class="btn-submit" style="width:auto; padding:8px 16px; font-size:0.85rem; margin:0;">Post</button>
+          </div>
+        </div>
+
+        <div id="wallPosts" style="margin-top:16px;">
+          <!-- Dynamically Populated -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Quick Links Floating Bar -->
+  <div class="bottom-bar">
+    <div class="app-container">
+      <a href="https://maps.google.com/?q=Heinola+Finland" target="_blank" class="btn-secondary">🗺️ Open Map</a>
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn-secondary">⚡ Quick RSVP</button>
+    </div>
+  </div>
+
+  <script>
+    /* 1. Snow Animation Generator */
+    function createSnow() {
+      const container = document.getElementById('snowContainer');
+      const count = 30;
+      for (let i = 0; i < count; i++) {
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        const size = Math.random() * 4 + 2;
+        flake.style.width = `${size}px`;
+        flake.style.height = `${size}px`;
+        flake.style.left = `${Math.random() * 100}vw`;
+        flake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        flake.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(flake);
+      }
+    }
+    createSnow();
+
+    /* 2. Target Countdown Timer */
+    const targetDate = new Date('December 19, 2026 18:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').innerText = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').innerText = String(secs).padStart(2, '0');
+      } else {
+        document.getElementById('cd-days').innerText = '00';
+        document.getElementById('cd-hours').innerText = '00';
+        document.getElementById('cd-mins').innerText = '00';
+        document.getElementById('cd-secs').innerText = '00';
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    /* 3. Tab Switching Logic */
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById(`tab-${tabId}`).classList.add('active');
+    }
+
+    /* 4. RSVP Logic & Storage */
+    let rsvpList = JSON.parse(localStorage.getItem('heinola_rsvps')) || [
+      { name: "Matti", status: "Yes" },
+      { name: "Sanna & Ville", status: "Yes" }
+    ];
+
+    function renderRSVPs() {
+      const display = document.getElementById('guestListDisplay');
+      const countEl = document.getElementById('attendeeCount');
+      
+      const going = rsvpList.filter(r => r.status === 'Yes');
+      countEl.innerText = `${going.length} Attending`;
+
+      if (rsvpList.length === 0) {
+        display.innerText = "No RSVPs yet. Be the first!";
+      } else {
+        display.innerText = "Attending: " + rsvpList.map(r => `${r.name} (${r.status})`).join(', ');
+      }
+    }
+
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value.trim();
+      const status = document.getElementById('guestStatus').value;
+
+      if (name) {
+        rsvpList.unshift({ name, status });
+        localStorage.setItem('heinola_rsvps', JSON.stringify(rsvpList));
+        renderRSVPs();
+        document.getElementById('guestName').value = '';
+        alert(`Thanks ${name}! Your RSVP has been saved.`);
+      }
+    });
+    renderRSVPs();
+
+    /* 5. Music Song Board & Voting */
+    let songList = JSON.parse(localStorage.getItem('heinola_songs')) || [
+      { title: "Cha Cha Cha", artist: "Käärijä", votes: 8 },
+      { title: "Blinding Lights", artist: "The Weeknd", votes: 5 },
+      { title: "Sandstorm", artist: "Darude", votes: 12 }
+    ];
+
+    function renderSongs() {
+      const container = document.getElementById('songList');
+      container.innerHTML = '';
+
+      songList.sort((a, b) => b.votes - a.votes);
+
+      songList.forEach((song, index) => {
+        const item = document.createElement('div');
+        item.className = 'song-item';
+        item.innerHTML = `
+          <div class="song-info">
+            <div class="song-title">${song.title}</div>
+            <div class="song-artist">${song.artist}</div>
+          </div>
+          <button class="vote-btn" onclick="voteSong(${index})">
+            🔥 <span>${song.votes}</span>
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function addSong() {
+      const input = document.getElementById('songInput');
+      const val = input.value.trim();
+
+      if (val) {
+        const parts = val.split('-');
+        const title = parts[0] ? parts[0].trim() : val;
+        const artist = parts[1] ? parts[1].trim() : 'Requested Guest Track';
+
+        songList.push({ title, artist, votes: 1 });
+        localStorage.setItem('heinola_songs', JSON.stringify(songList));
+        renderSongs();
+        input.value = '';
+      }
+    }
+
+    function voteSong(index) {
+      songList[index].votes++;
+      localStorage.setItem('heinola_songs', JSON.stringify(songList));
+      renderSongs();
+    }
+    renderSongs();
+
+    /* 6. Dance Style Poll */
+    let dancePolls = JSON.parse(localStorage.getItem('heinola_dance_poll')) || [
+      { style: "Finnish Hits & Pop Classics", votes: 10 },
+      { style: "90s & 2000s Nostalgia", votes: 14 },
+      { style: "EDM / Club Bangers", votes: 7 },
+      { style: "Rock & Indie Anthems", votes: 4 }
+    ];
+
+    function renderDancePoll() {
+      const container = document.getElementById('dancePoll');
+      container.innerHTML = '';
+      
+      const totalVotes = dancePolls.reduce((acc, curr) => acc + curr.votes, 0) || 1;
+
+      dancePolls.forEach((poll, index) => {
+        const percentage = Math.round((poll.votes / totalVotes) * 100);
+        const el = document.createElement('div');
+        el.className = 'dance-poll-option';
+        el.innerHTML = `
+          <div class="poll-header">
+            <span>${poll.style}</span>
+            <strong style="color:var(--primary);">${poll.votes} votes (${percentage}%)</strong>
+          </div>
+          <div class="poll-bar-bg" onclick="voteDance(${index})">
+            <div class="poll-bar-fill" style="width: ${percentage}%;"></div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    function voteDance(index) {
+      dancePolls[index].votes++;
+      localStorage.setItem('heinola_dance_poll', JSON.stringify(dancePolls));
+      renderDancePoll();
+    }
+    renderDancePoll();
+
+    /* 7. Wall / Social Feed */
+    let wallPosts = JSON.parse(localStorage.getItem('heinola_wall_posts')) || [
+      { name: "Juho", msg: "Can't wait for Heinola party night! Glögi is on me! 🍷", img: null, time: "Yesterday" }
+    ];
+    let selectedImageBase64 = null;
+
+    function handleImageSelect(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById('imgFileName').innerText = file.name;
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          selectedImageBase64 = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function renderWall() {
+      const container = document.getElementById('wallPosts');
+      container.innerHTML = '';
+
+      wallPosts.forEach(post => {
+        const item = document.createElement('div');
+        item.className = 'wall-post';
+        item.innerHTML = `
+          <div class="post-header">
+            <span class="post-user">${post.name}</span>
+            <span>${post.time}</span>
+          </div>
+          <div class="post-msg">${post.msg}</div>
+          ${post.img ? `<img src="${post.img}" class="post-img" alt="Party Photo">` : ''}
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function postToWall() {
+      const name = document.getElementById('wallUser').value.trim() || 'Anonymous Friend';
+      const msg = document.getElementById('wallMsg').value.trim();
+
+      if (msg || selectedImageBase64) {
+        wallPosts.unshift({
+          name,
+          msg,
+          img: selectedImageBase64,
+          time: 'Just now'
+        });
+        localStorage.setItem('heinola_wall_posts', JSON.stringify(wallPosts));
+        
+        document.getElementById('wallMsg').value = '';
+        document.getElementById('wallImgInput').value = '';
+        document.getElementById('imgFileName').innerText = '';
+        selectedImageBase64 = null;
+        
+        renderWall();
+      }
+    }
+    renderWall();
+  </script>
+</body>
+</html>
