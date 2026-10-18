@@ -619,7 +619,7 @@
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;" id="dance-subtitle">Tanssia ja yhteistä liikkumista illan aikana!</p>
 
         <div class="play-card" style="border-color: rgba(255, 42, 133, 0.4); background: rgba(255, 42, 133, 0.08);">
-          <h4 id="dance-sq-title">🕺 Square dance</h4>
+          <h4 id="dance-sq-title">🕺 Rivitanssi</h4>
           <p id="dance-sq-leader"><strong id="dance-leader-lbl">Ohjaaja:</strong> Avoinna</p>
         </div>
       </div>
@@ -733,6 +733,7 @@
         p4Desc: "Numeroita järjestykseen ja liikuntaa",
         danceTitle: "💃 Tanssi & Liike",
         danceSubtitle: "Tanssia ja yhteistä liikkumista illan aikana!",
+        danceItemTitle: "🕺 Rivitanssi",
         danceLeaderLbl: "Ohjaaja:",
         danceLeaderVal: "Avoinna",
         infoTitle: "📍 Bilesijainti",
@@ -795,6 +796,7 @@
         p4Desc: "Числа по порядку и физические упражнения / движение",
         danceTitle: "💃 Танцы и Движение",
         danceSubtitle: "Танцы и совместная активность во время вечера!",
+        danceItemTitle: "🕺 Линейный танец (Rivitanssi)",
         danceLeaderLbl: "Ведущий:",
         danceLeaderVal: "Уточняется",
         infoTitle: "📍 Место проведения",
@@ -870,9 +872,7 @@
 
       document.getElementById('dance-title').innerText = t.danceTitle;
       document.getElementById('dance-subtitle').innerText = t.danceSubtitle;
-      document.getElementById('dance-sq-title').innerText = "🕺 Square dance";
-      document.getElementById('dance-leader-lbl').innerText = t.danceLeaderLbl;
-      // Keep leader value updated
+      document.getElementById('dance-sq-title').innerText = t.danceItemTitle;
       document.getElementById('dance-sq-leader').innerHTML = `<strong id="dance-leader-lbl">${t.danceLeaderLbl}</strong> ${t.danceLeaderVal}`;
 
       document.getElementById('info-title').innerText = t.infoTitle;
