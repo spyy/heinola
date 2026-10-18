@@ -584,14 +584,19 @@
         <div class="card-title" id="play-title">🎲 Bilesessiot & Pelit</div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;" id="play-subtitle">Tässä on lista peleistä ja aktiviteeteista, joita pelaamme illan aikana!</p>
 
-        <div class="play-card" style="border-color: rgba(0, 242, 254, 0.4); background: rgba(0, 242, 254, 0.08);">
-          <h4 id="p-mystery-title">🕵️ Salapoliisipeli (Tiina & Saija)</h4>
-          <p id="p-mystery-desc">Jännittävä ja hauska salapoliisi- ja mysteeripeli Tiinan ja Saijan vetämänä!</p>
-        </div>
-
         <div class="play-card">
           <h4 id="p1-title">🃏 Korttipelit & Uno (Sami)</h4>
           <p id="p1-desc">Klassisia korttipelejä, Uno-turnaus ja hauskoja nopeatempoisia pöytäpelejä Samin johdolla.</p>
+        </div>
+
+        <div class="play-card" style="border-color: rgba(0, 242, 254, 0.4); background: rgba(0, 242, 254, 0.08);">
+          <h4 id="p-satu-title">📖 Saijan satu</h4>
+          <p id="p-satu-desc">tarvitaan 11 avustajaa</p>
+        </div>
+
+        <div class="play-card">
+          <h4 id="p-board-title">🎲 Lautapelit</h4>
+          <p id="p-board-desc">Avoinna</p>
         </div>
 
         <div class="play-card">
@@ -701,10 +706,12 @@
         playSubtitle: "Tässä on lista peleistä ja aktiviteeteista, joita pelaamme illan aikana!",
         presenterLbl: "Juontaja / Esiintyjä",
         presenterVal: "Esiintyjä avoinna",
-        pMysteryTitle: "🕵️ Salapoliisipeli (Tiina & Saija)",
-        pMysteryDesc: "Jännittävä ja hauska salapoliisi- ja mysteeripeli Tiinan ja Saijan vetämänä!",
         p1Title: "🃏 Korttipelit & Uno (Sami)",
         p1Desc: "Klassisia korttipelejä, Uno-turnaus ja hauskoja nopeatempoisia pöytäpelejä Samin johdolla.",
+        pSatuTitle: "📖 Saijan satu",
+        pSatuDesc: "tarvitaan 11 avustajaa",
+        pBoardTitle: "🎲 Lautapelit",
+        pBoardDesc: "Avoinna",
         p2Title: "❓ Talvivisa & Tietokilpailu",
         p2Desc: "Avoinna",
         p4Title: "💬 Tiinan leikit",
@@ -756,10 +763,12 @@
         playSubtitle: "Список игр и активностей на наш вечер!",
         presenterLbl: "Ведущий / Выступающий",
         presenterVal: "Ведущий уточняется",
-        pMysteryTitle: "🕵️ Детективная игра (Тиина и Сайя)",
-        pMysteryDesc: "Увлекательная детективная игра-мистерия от Тиины и Сайи!",
         p1Title: "🃏 Карточные игры и Уно (Сами)",
         p1Desc: "Классические карточные игры, турнир по Уно и настолки под руководством Сами.",
+        pSatuTitle: "📖 Сказка от Сайя",
+        pSatuDesc: "требуется 11 помощников",
+        pBoardTitle: "🎲 Настольные игры",
+        pBoardDesc: "Уточняется",
         p2Title: "❓ Зимняя викторина",
         p2Desc: "Уточняется",
         p4Title: "💬 Игры от Тиины",
@@ -823,10 +832,12 @@
 
       document.getElementById('play-title').innerText = t.playTitle;
       document.getElementById('play-subtitle').innerText = t.playSubtitle;
-      document.getElementById('p-mystery-title').innerText = t.pMysteryTitle;
-      document.getElementById('p-mystery-desc').innerText = t.pMysteryDesc;
       document.getElementById('p1-title').innerText = t.p1Title;
       document.getElementById('p1-desc').innerText = t.p1Desc;
+      document.getElementById('p-satu-title').innerText = t.pSatuTitle;
+      document.getElementById('p-satu-desc').innerText = t.pSatuDesc;
+      document.getElementById('p-board-title').innerText = t.pBoardTitle;
+      document.getElementById('p-board-desc').innerText = t.pBoardDesc;
       document.getElementById('p2-title').innerText = t.p2Title;
       document.getElementById('p2-desc').innerText = t.p2Desc;
       document.getElementById('p4-title').innerText = t.p4Title;
