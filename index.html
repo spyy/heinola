@@ -584,15 +584,6 @@
         <div class="card-title" id="play-title">🎲 Bilesessiot & Pelit</div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;" id="play-subtitle">Tässä on lista peleistä ja aktiviteeteista, joita pelaamme illan aikana!</p>
 
-        <!-- Presenter Card -->
-        <div class="presenter-card">
-          <div class="presenter-icon">🎙️</div>
-          <div class="presenter-info">
-            <h5 id="presenter-lbl">Juontaja / Esiintyjä</h5>
-            <p id="presenter-val">Esiintyjä avoinna</p>
-          </div>
-        </div>
-
         <div class="play-card" style="border-color: rgba(0, 242, 254, 0.4); background: rgba(0, 242, 254, 0.08);">
           <h4 id="p-mystery-title">🕵️ Salapoliisipeli (Tiina & Saija)</h4>
           <p id="p-mystery-desc">Jännittävä ja hauska salapoliisi- ja mysteeripeli Tiinan ja Saijan vetämänä!</p>
@@ -621,6 +612,15 @@
         <div class="card-title" id="info-title">📍 Bilesijainti</div>
         <p style="font-size:0.9rem; margin-bottom:8px;"><strong id="info-loc-lbl">Osoite:</strong> Veljespolku 3, 19110 Vierumäki, Suomi</p>
         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;" id="info-addr-note">Pääset perille helposti autolla tai bussilla.</p>
+
+        <!-- Presenter Card (Moved here) -->
+        <div class="presenter-card">
+          <div class="presenter-icon">🎙️</div>
+          <div class="presenter-info">
+            <h5 id="presenter-lbl">Juontaja / Esiintyjä</h5>
+            <p id="presenter-val">Esiintyjä avoinna</p>
+          </div>
+        </div>
 
         <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; margin-bottom:12px; border:1px solid var(--border-color);">
           <h5 style="color:var(--primary); margin-bottom:4px;" id="info-parking-title">🚗 Pysäköinti & Saapuminen</h5>
@@ -823,8 +823,6 @@
 
       document.getElementById('play-title').innerText = t.playTitle;
       document.getElementById('play-subtitle').innerText = t.playSubtitle;
-      document.getElementById('presenter-lbl').innerText = t.presenterLbl;
-      document.getElementById('presenter-val').innerText = t.presenterVal;
       document.getElementById('p-mystery-title').innerText = t.pMysteryTitle;
       document.getElementById('p-mystery-desc').innerText = t.pMysteryDesc;
       document.getElementById('p1-title').innerText = t.p1Title;
@@ -837,6 +835,8 @@
       document.getElementById('info-title').innerText = t.infoTitle;
       document.getElementById('info-loc-lbl').innerText = t.infoLocLbl;
       document.getElementById('info-addr-note').innerText = t.infoAddrNote;
+      document.getElementById('presenter-lbl').innerText = t.presenterLbl;
+      document.getElementById('presenter-val').innerText = t.presenterVal;
       document.getElementById('info-parking-title').innerText = t.infoParkingTitle;
       document.getElementById('info-parking-desc').innerText = t.infoParkingDesc;
       document.getElementById('info-bring-title').innerText = t.infoBringTitle;
