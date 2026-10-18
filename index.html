@@ -527,6 +527,7 @@
       <button class="tab-btn active" id="tab-btn-music" onclick="switchTab('music')">🎵 Musiikki</button>
       <button class="tab-btn" id="tab-btn-menu" onclick="switchTab('menu')">🍕 Menu</button>
       <button class="tab-btn" id="tab-btn-play" onclick="switchTab('play')">🎲 Pelit</button>
+      <button class="tab-btn" id="tab-btn-dance" onclick="switchTab('dance')">💃 Tanssi</button>
       <button class="tab-btn" id="tab-btn-info" onclick="switchTab('info')">📍 Tiedot</button>
     </nav>
 
@@ -611,7 +612,20 @@
       </div>
     </div>
 
-    <!-- TAB 4: LOCATION, TIMELINE & DETAILS -->
+    <!-- TAB 4: DANCE -->
+    <div id="tab-dance" class="tab-content">
+      <div class="content-card">
+        <div class="card-title" id="dance-title">💃 Tanssi & Liike</div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;" id="dance-subtitle">Tanssia ja yhteistä liikkumista illan aikana!</p>
+
+        <div class="play-card" style="border-color: rgba(255, 42, 133, 0.4); background: rgba(255, 42, 133, 0.08);">
+          <h4 id="dance-sq-title">🕺 Square dance</h4>
+          <p id="dance-sq-leader"><strong id="dance-leader-lbl">Ohjaaja:</strong> Avoinna</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: LOCATION, TIMELINE & DETAILS -->
     <div id="tab-info" class="tab-content">
       <div class="content-card">
         <div class="card-title" id="info-title">📍 Bilesijainti</div>
@@ -686,6 +700,7 @@
         tabMusic: "🎵 Musiikki",
         tabMenu: "🍕 Menu",
         tabPlay: "🎲 Pelit",
+        tabDance: "💃 Tanssi",
         tabInfo: "📍 Tiedot",
         musicLiveTitle: "🎸 Live-esiintymiset",
         live1Title: "🎤 Laulu & kitara",
@@ -716,6 +731,10 @@
         p2Desc: "Avoinna",
         p4Title: "💬 Tiinan leikit",
         p4Desc: "Numeroita järjestykseen ja liikuntaa",
+        danceTitle: "💃 Tanssi & Liike",
+        danceSubtitle: "Tanssia ja yhteistä liikkumista illan aikana!",
+        danceLeaderLbl: "Ohjaaja:",
+        danceLeaderVal: "Avoinna",
         infoTitle: "📍 Bilesijainti",
         infoLocLbl: "Osoite:",
         infoAddrNote: "Pääset perille helposti autolla tai bussilla.",
@@ -743,6 +762,7 @@
         tabMusic: "🎵 Музыка",
         tabMenu: "🍕 Меню",
         tabPlay: "🎲 Игры",
+        tabDance: "💃 Танцы",
         tabInfo: "📍 Детали",
         musicLiveTitle: "🎸 Живая музыка",
         live1Title: "🎤 Пение и гитара",
@@ -773,6 +793,10 @@
         p2Desc: "Уточняется",
         p4Title: "💬 Игры от Тиины",
         p4Desc: "Числа по порядку и физические упражнения / движение",
+        danceTitle: "💃 Танцы и Движение",
+        danceSubtitle: "Танцы и совместная активность во время вечера!",
+        danceLeaderLbl: "Ведущий:",
+        danceLeaderVal: "Уточняется",
         infoTitle: "📍 Место проведения",
         infoLocLbl: "Адрес:",
         infoAddrNote: "Удобно добираться на машине или автобусе.",
@@ -783,7 +807,7 @@
         schedTitle: "⏰ Программа вечера",
         s1Desc: "Сбор гостей и приветственный тост",
         s2Desc: "Обед и угощения",
-        s3Desc: "Живая музыка (Анна и Рейма, Ари и Сами), детективная игра (Тиина и Сайя) и настолки",
+        s3Desc: "Живая музыка (Anna & Reima, Ari & Sami), детективная игра (Tiina & Saija) и настолки",
         s4Desc: "Завершение вечеринки",
         btnMap: "🗺️ Открыть карту",
         btnCall: "📞 Позвонить Анне"
@@ -811,6 +835,7 @@
       document.getElementById('tab-btn-music').innerText = t.tabMusic;
       document.getElementById('tab-btn-menu').innerText = t.tabMenu;
       document.getElementById('tab-btn-play').innerText = t.tabPlay;
+      document.getElementById('tab-btn-dance').innerText = t.tabDance;
       document.getElementById('tab-btn-info').innerText = t.tabInfo;
 
       document.getElementById('music-live-title').innerText = t.musicLiveTitle;
@@ -842,6 +867,13 @@
       document.getElementById('p2-desc').innerText = t.p2Desc;
       document.getElementById('p4-title').innerText = t.p4Title;
       document.getElementById('p4-desc').innerText = t.p4Desc;
+
+      document.getElementById('dance-title').innerText = t.danceTitle;
+      document.getElementById('dance-subtitle').innerText = t.danceSubtitle;
+      document.getElementById('dance-sq-title').innerText = "🕺 Square dance";
+      document.getElementById('dance-leader-lbl').innerText = t.danceLeaderLbl;
+      // Keep leader value updated
+      document.getElementById('dance-sq-leader').innerHTML = `<strong id="dance-leader-lbl">${t.danceLeaderLbl}</strong> ${t.danceLeaderVal}`;
 
       document.getElementById('info-title').innerText = t.infoTitle;
       document.getElementById('info-loc-lbl').innerText = t.infoLocLbl;
