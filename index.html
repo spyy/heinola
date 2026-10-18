@@ -283,6 +283,36 @@
       color: #fff;
     }
 
+    /* Presenter Info Card */
+    .presenter-card {
+      background: rgba(255, 42, 133, 0.08);
+      border: 1px dashed rgba(255, 42, 133, 0.4);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .presenter-icon {
+      font-size: 1.6rem;
+    }
+
+    .presenter-info h5 {
+      font-size: 0.75rem;
+      color: var(--accent-pink);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .presenter-info p {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
     /* Live Music Cards */
     .live-music-card {
       background: rgba(0, 242, 254, 0.08);
@@ -554,6 +584,15 @@
         <div class="card-title" id="play-title">🎲 Bilesessiot & Pelit</div>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;" id="play-subtitle">Tässä on lista peleistä ja aktiviteeteista, joita pelaamme illan aikana!</p>
 
+        <!-- Presenter Card -->
+        <div class="presenter-card">
+          <div class="presenter-icon">🎙️</div>
+          <div class="presenter-info">
+            <h5 id="presenter-lbl">Juontaja / Esiintyjä</h5>
+            <p id="presenter-val">Esiintyjä avoinna</p>
+          </div>
+        </div>
+
         <div class="play-card" style="border-color: rgba(0, 242, 254, 0.4); background: rgba(0, 242, 254, 0.08);">
           <h4 id="p-mystery-title">🕵️ Salapoliisipeli (Tiina & Saija)</h4>
           <p id="p-mystery-desc">Jännittävä ja hauska salapoliisi- ja mysteeripeli Tiinan ja Saijan vetämänä!</p>
@@ -660,6 +699,8 @@
         m4Desc: "Tuoretta tummapaahtoista kahvia ja yrttiteetä",
         playTitle: "🎲 Bilesessiot & Pelit",
         playSubtitle: "Tässä on lista peleistä ja aktiviteeteista, joita pelaamme illan aikana!",
+        presenterLbl: "Juontaja / Esiintyjä",
+        presenterVal: "Esiintyjä avoinna",
         pMysteryTitle: "🕵️ Salapoliisipeli (Tiina & Saija)",
         pMysteryDesc: "Jännittävä ja hauska salapoliisi- ja mysteeripeli Tiinan ja Saijan vetämänä!",
         p1Title: "🃏 Korttipelit & Uno (Sami)",
@@ -713,6 +754,8 @@
         m4Desc: "Свежесваренный темный кофе и травяной чай",
         playTitle: "🎲 Игры и Развлечения",
         playSubtitle: "Список игр и активностей на наш вечер!",
+        presenterLbl: "Ведущий / Выступающий",
+        presenterVal: "Ведущий уточняется",
         pMysteryTitle: "🕵️ Детективная игра (Тиина и Сайя)",
         pMysteryDesc: "Увлекательная детективная игра-мистерия от Тиины и Сайи!",
         p1Title: "🃏 Карточные игры и Уно (Сами)",
@@ -780,6 +823,8 @@
 
       document.getElementById('play-title').innerText = t.playTitle;
       document.getElementById('play-subtitle').innerText = t.playSubtitle;
+      document.getElementById('presenter-lbl').innerText = t.presenterLbl;
+      document.getElementById('presenter-val').innerText = t.presenterVal;
       document.getElementById('p-mystery-title').innerText = t.pMysteryTitle;
       document.getElementById('p-mystery-desc').innerText = t.pMysteryDesc;
       document.getElementById('p1-title').innerText = t.p1Title;
