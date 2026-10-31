@@ -9,11 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #07111b;
+      --bg-dark: #090d16;
       --bg-card: rgba(22, 28, 45, 0.75);
       --bg-card-hover: rgba(30, 39, 64, 0.85);
       --primary: #00f2fe;
-      --primary-glow: rgb(0, 241, 254);
+      --primary-glow: rgba(0, 242, 254, 0.4);
       --secondary: #4facfe;
       --accent-pink: #ff2a85;
       --accent-purple: #8a2be2;
@@ -283,10 +283,21 @@
       color: #fff;
     }
 
-    /* Presenter Info Card */
+    /* Presenter & Kitchen Info Cards */
     .presenter-card {
       background: rgba(255, 42, 133, 0.08);
       border: 1px dashed rgba(255, 42, 133, 0.4);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .kitchen-card {
+      background: rgba(79, 172, 254, 0.08);
+      border: 1px dashed rgba(79, 172, 254, 0.4);
       border-radius: 14px;
       padding: 12px 14px;
       margin-bottom: 12px;
@@ -307,7 +318,15 @@
       margin-bottom: 2px;
     }
 
-    .presenter-info p {
+    .kitchen-info h5 {
+      font-size: 0.75rem;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .presenter-info p, .kitchen-info p {
       font-size: 0.9rem;
       font-weight: 700;
       color: #fff;
@@ -557,18 +576,28 @@
         <div class="menu-grid">
           <div class="menu-item">
             <div class="menu-icon">🍋</div>
-            <h4 id="m1-title">Limonadi</h4>
+            <h4 id="m1-title">Limonadit ja mehut</h4>
             <p id="m1-desc">Nyyttikestit</p>
           </div>
           <div class="menu-item">
             <div class="menu-icon">🌭</div>
             <h4 id="m2-title">Grillimakkara</h4>
-            <p id="m2-desc">Grillimestari ?</p>
+            <p id="m2-desc">Grillimestari avoinna</p>
           </div>
           <div class="menu-item">
             <div class="menu-icon">🥐</div>
             <h4 id="m3-title">Leivonnaiset</h4>
             <p id="m3-desc">Nyyttikestit</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon">🥗</div>
+            <h4 id="m5-title">Salaatit & leivät</h4>
+            <p id="m5-desc">Nyyttikestit</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-icon">🍬</div>
+            <h4 id="m6-title">Karkit & keksit</h4>
+            <p id="m6-desc">Avoinna</p>
           </div>
           <div class="menu-item">
             <div class="menu-icon">☕</div>
@@ -622,6 +651,11 @@
           <h4 id="dance-sq-title">🕺 Rivitanssi</h4>
           <p id="dance-sq-leader"><strong id="dance-leader-lbl">Ohjaaja:</strong> Avoinna</p>
         </div>
+
+        <div class="play-card">
+          <h4 id="dance-letkiss-title">💃 Letkiss</h4>
+          <p id="dance-letkiss-leader"><strong id="dance-letkiss-lbl">Ohjaaja:</strong> Juha</p>
+        </div>
       </div>
     </div>
 
@@ -638,6 +672,15 @@
           <div class="presenter-info">
             <h5 id="presenter-lbl">Juontaja / Esiintyjä</h5>
             <p id="presenter-val">Esiintyjä avoinna</p>
+          </div>
+        </div>
+
+        <!-- Kitchen Team Card -->
+        <div class="kitchen-card">
+          <div class="presenter-icon">👩‍🍳</div>
+          <div class="kitchen-info">
+            <h5 id="kitchen-lbl">Keittiötiimi</h5>
+            <p id="kitchen-val">Paula, Heli, Anna, Eija</p>
           </div>
         </div>
 
@@ -709,18 +752,24 @@
         live2Desc: "Ari ja Sami",
         menuTitle: "🍲 Tarjoilut & Juomat",
         menuSubtitle: "Raikkaita juomia, lämmintä kahvia ja suomalaista purtavaa.",
-        m1Title: "Limonadi",
+        m1Title: "Limonadit ja mehut",
         m1Desc: "Nyyttikestit",
         m2Title: "Grillimakkara",
-        m2Desc: "Grillimestari ?",
+        m2Desc: "Grillimestari avoinna",
         m3Title: "Leivonnaiset",
         m3Desc: "Nyyttikestit",
         m4Title: "Kahvi & Tee",
         m4Desc: "Tuoretta tummapaahtoista kahvia ja yrttiteetä",
+        m5Title: "Salaatit & leivät",
+        m5Desc: "Nyyttikestit",
+        m6Title: "Karkit & keksit",
+        m6Desc: "Avoinna",
         playTitle: "🎲 Bilesessiot & Pelit",
         playSubtitle: "Tässä on lista peleistä ja aktiviteeteista, joita pelaamme illan aikana!",
         presenterLbl: "Juontaja / Esiintyjä",
         presenterVal: "Esiintyjä avoinna",
+        kitchenLbl: "Keittiötiimi",
+        kitchenVal: "Paula, Heli, Anna, Eija",
         p1Title: "🃏 Korttipelit & Uno (Sami)",
         p1Desc: "Klassisia korttipelejä, Uno-turnaus ja hauskoja nopeatempoisia pöytäpelejä Samin johdolla.",
         pSatuTitle: "📖 Saijan satu",
@@ -736,13 +785,16 @@
         danceItemTitle: "🕺 Rivitanssi",
         danceLeaderLbl: "Ohjaaja:",
         danceLeaderVal: "Avoinna",
+        danceLetkissTitle: "💃 Letkiss",
+        danceLetkissLeaderLbl: "Ohjaaja:",
+        danceLetkissLeaderVal: "Juha",
         infoTitle: "📍 Bilesijainti",
         infoLocLbl: "Osoite:",
         infoAddrNote: "Pääset perille helposti autolla tai bussilla.",
         infoParkingTitle: "🚗 Pysäköinti & Saapuminen",
         infoParkingDesc: "Pihalla ja kadunvarressa on ilmainen pysäköinti. Bussipysäkki on kävelymatkan päässä.",
         infoBringTitle: "❄️ Mitä ottaa mukaan?",
-        infoBringDesc: "Lämmin talvitakki ulkoiluun ja iloinen mieli!",
+        infoBringDesc: "Lämmin talvitakki ulkoiluun ja iloinen meili!",
         schedTitle: "⏰ Illan aikataulu",
         s1Desc: "Saapuminen & Tervetuloomalja",
         s2Desc: "Ruokailu & Purtavat",
@@ -772,21 +824,27 @@
         live2Desc: "Ари и Сами",
         menuTitle: "🍲 Закуски и Напитки",
         menuSubtitle: "Освежающие напитки, горячий кофе и финские угощения.",
-        m1Title: "Лимонад",
-        m1Desc: "Складчина (Приносите угощения с собой)",
+        m1Title: "Лимонады и соки",
+        m1Desc: "Складчина (приносите с собой)",
         m2Title: "Сосиски на гриле",
-        m2Desc: "Мастер гриля ?",
+        m2Desc: "Мастер гриля: Уточняется",
         m3Title: "Выпечка",
-        m3Desc: "Складчина (Приносите угощения с собой)",
+        m3Desc: "Складчина (приносите с собой)",
         m4Title: "Кофе и Чай",
         m4Desc: "Свежесваренный темный кофе и травяной чай",
+        m5Title: "Салаты и хлеб",
+        m5Desc: "Складчина (приносите с собой)",
+        m6Title: "Конфеты и печенье",
+        m6Desc: "Уточняется",
         playTitle: "🎲 Игры и Развлечения",
         playSubtitle: "Список игр и активностей на наш вечер!",
         presenterLbl: "Ведущий / Выступающий",
         presenterVal: "Ведущий уточняется",
+        kitchenLbl: "Команда кухни",
+        kitchenVal: "Паула, Хели, Анна, Эйя",
         p1Title: "🃏 Карточные игры и Уно (Сами)",
         p1Desc: "Классические карточные игры, турнир по Уно и настолки под руководством Сами.",
-        pSatuTitle: "📖 Сказка от Сайи",
+        pSatuTitle: "📖 Сказка от Сайя",
         pSatuDesc: "требуется 11 помощников",
         pBoardTitle: "🎲 Настольные игры",
         pBoardDesc: "Уточняется",
@@ -799,6 +857,9 @@
         danceItemTitle: "🕺 Линейный танец (Rivitanssi)",
         danceLeaderLbl: "Ведущий:",
         danceLeaderVal: "Уточняется",
+        danceLetkissTitle: "💃 Летнисс (Letkiss)",
+        danceLetkissLeaderLbl: "Ведущий:",
+        danceLetkissLeaderVal: "Юха",
         infoTitle: "📍 Место проведения",
         infoLocLbl: "Адрес:",
         infoAddrNote: "Удобно добираться на машине или автобусе.",
@@ -856,6 +917,10 @@
       document.getElementById('m3-desc').innerText = t.m3Desc;
       document.getElementById('m4-title').innerText = t.m4Title;
       document.getElementById('m4-desc').innerText = t.m4Desc;
+      document.getElementById('m5-title').innerText = t.m5Title;
+      document.getElementById('m5-desc').innerText = t.m5Desc;
+      document.getElementById('m6-title').innerText = t.m6Title;
+      document.getElementById('m6-desc').innerText = t.m6Desc;
 
       document.getElementById('play-title').innerText = t.playTitle;
       document.getElementById('play-subtitle').innerText = t.playSubtitle;
@@ -874,12 +939,16 @@
       document.getElementById('dance-subtitle').innerText = t.danceSubtitle;
       document.getElementById('dance-sq-title').innerText = t.danceItemTitle;
       document.getElementById('dance-sq-leader').innerHTML = `<strong id="dance-leader-lbl">${t.danceLeaderLbl}</strong> ${t.danceLeaderVal}`;
+      document.getElementById('dance-letkiss-title').innerText = t.danceLetkissTitle;
+      document.getElementById('dance-letkiss-leader').innerHTML = `<strong id="dance-letkiss-lbl">${t.danceLetkissLeaderLbl}</strong> ${t.danceLetkissLeaderVal}`;
 
       document.getElementById('info-title').innerText = t.infoTitle;
       document.getElementById('info-loc-lbl').innerText = t.infoLocLbl;
       document.getElementById('info-addr-note').innerText = t.infoAddrNote;
       document.getElementById('presenter-lbl').innerText = t.presenterLbl;
       document.getElementById('presenter-val').innerText = t.presenterVal;
+      document.getElementById('kitchen-lbl').innerText = t.kitchenLbl;
+      document.getElementById('kitchen-val').innerText = t.kitchenVal;
       document.getElementById('info-parking-title').innerText = t.infoParkingTitle;
       document.getElementById('info-parking-desc').innerText = t.infoParkingDesc;
       document.getElementById('info-bring-title').innerText = t.infoBringTitle;
