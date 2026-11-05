@@ -283,8 +283,8 @@
       color: #fff;
     }
 
-    /* Presenter & Kitchen Info Cards */
-    .presenter-card {
+    /* Info Role Cards */
+    .role-card {
       background: rgba(255, 42, 133, 0.08);
       border: 1px dashed rgba(255, 42, 133, 0.4);
       border-radius: 14px;
@@ -295,38 +295,32 @@
       gap: 12px;
     }
 
-    .kitchen-card {
+    .role-card.kitchen {
       background: rgba(79, 172, 254, 0.08);
-      border: 1px dashed rgba(79, 172, 254, 0.4);
-      border-radius: 14px;
-      padding: 12px 14px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      border-color: rgba(79, 172, 254, 0.4);
     }
 
-    .presenter-icon {
+    .role-card.monitor {
+      background: rgba(0, 242, 254, 0.08);
+      border-color: rgba(0, 242, 254, 0.4);
+    }
+
+    .role-icon {
       font-size: 1.6rem;
     }
 
-    .presenter-info h5 {
+    .role-info h5 {
       font-size: 0.75rem;
-      color: var(--accent-pink);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 2px;
     }
 
-    .kitchen-info h5 {
-      font-size: 0.75rem;
-      color: var(--secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
-    }
+    .role-card.presenter .role-info h5 { color: var(--accent-pink); }
+    .role-card.kitchen .role-info h5 { color: var(--secondary); }
+    .role-card.monitor .role-info h5 { color: var(--primary); }
 
-    .presenter-info p, .kitchen-info p {
+    .role-info p {
       font-size: 0.9rem;
       font-weight: 700;
       color: #fff;
@@ -643,6 +637,11 @@
           <h4 id="p4-title">💬 Tiinan leikit</h4>
           <p id="p4-desc">Numeroita järjestykseen ja liikuntaa</p>
         </div>
+
+        <div class="play-card">
+          <h4 id="p5-title">📝 Adjektiivitarina</h4>
+          <p id="p5-desc">Katja</p>
+        </div>
       </div>
     </div>
 
@@ -672,20 +671,29 @@
         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;" id="info-addr-note">Pääset perille helposti autolla tai bussilla.</p>
 
         <!-- Presenter Card -->
-        <div class="presenter-card">
-          <div class="presenter-icon">🎙️</div>
-          <div class="presenter-info">
+        <div class="role-card presenter">
+          <div class="role-icon">🎙️</div>
+          <div class="role-info">
             <h5 id="presenter-lbl">Juontaja / Esiintyjä</h5>
             <p id="presenter-val">Esiintyjä avoinna</p>
           </div>
         </div>
 
         <!-- Kitchen Team Card -->
-        <div class="kitchen-card">
-          <div class="presenter-icon">👩‍🍳</div>
-          <div class="kitchen-info">
+        <div class="role-card kitchen">
+          <div class="role-icon">👩‍🍳</div>
+          <div class="role-info">
             <h5 id="kitchen-lbl">Keittiötiimi</h5>
             <p id="kitchen-val">Paula, Heli, Anna, Eija</p>
+          </div>
+        </div>
+
+        <!-- Party Monitor Card -->
+        <div class="role-card monitor">
+          <div class="role-icon">🛡️</div>
+          <div class="role-info">
+            <h5 id="monitor-lbl">Bilevahti</h5>
+            <p id="monitor-val">Jari</p>
           </div>
         </div>
 
@@ -696,7 +704,7 @@
 
         <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; border:1px solid var(--border-color);">
           <h5 style="color:var(--accent-pink); margin-bottom:4px;" id="info-bring-title">❄️ Mitä ottaa mukaan?</h5>
-          <p style="font-size:0.8rem; color:var(--text-muted);" id="info-bring-desc">Lämmin talvitakki ulkoiluun ja iloinen mieli!</p>
+          <p style="font-size:0.8rem; color:var(--text-muted);" id="info-bring-desc">Lämmin talvitakki ulkoiluun ja iloinen meili!</p>
         </div>
       </div>
 
@@ -708,7 +716,7 @@
             <div class="timeline-desc" id="s1-desc">Saapuminen & Tervetuloomalja</div>
           </div>
           <div class="timeline-item">
-            <div class="time-lbl">16:00</div>
+            <div class="time-lbl">15:00</div>
             <div class="timeline-desc" id="s2-desc">Ruokailu & Purtavat</div>
           </div>
           <div class="timeline-item">
@@ -777,6 +785,8 @@
         presenterVal: "Esiintyjä avoinna",
         kitchenLbl: "Keittiötiimi",
         kitchenVal: "Paula, Heli, Anna, Eija",
+        monitorLbl: "Bilevahti",
+        monitorVal: "Jari",
         p1Title: "🃏 Korttipelit & Uno (Sami)",
         p1Desc: "Klassisia korttipelejä, Uno-turnaus ja hauskoja nopeatempoisia pöytäpelejä Samin johdolla.",
         pSatuTitle: "📖 Satu",
@@ -787,6 +797,8 @@
         p2Desc: "Avoinna",
         p4Title: "💬 Tiinan leikit",
         p4Desc: "Numeroita järjestykseen ja liikuntaa",
+        p5Title: "📝 Adjektiivitarina",
+        p5Desc: "Katja",
         danceTitle: "💃 Tanssi & Liike",
         danceSubtitle: "Tanssia ja yhteistä liikkumista illan aikana!",
         danceItemTitle: "🕺 Rivitanssi",
@@ -851,6 +863,8 @@
         presenterVal: "Ведущий уточняется",
         kitchenLbl: "Команда кухни",
         kitchenVal: "Паула, Хели, Анна, Эйя",
+        monitorLbl: "Инспектор вечеринки",
+        monitorVal: "Яри",
         p1Title: "🃏 Карточные игры и Уно (Сами)",
         p1Desc: "Классические карточные игры, турнир по Уно и настолки под руководством Сами.",
         pSatuTitle: "📖 Сказка",
@@ -861,6 +875,8 @@
         p2Desc: "Уточняется",
         p4Title: "💬 Игры от Тиины",
         p4Desc: "Числа по порядку и физические упражнения / движение",
+        p5Title: "📝 История с прилагательными",
+        p5Desc: "Катя",
         danceTitle: "💃 Танцы и Движение",
         danceSubtitle: "Танцы и совместная активность во время вечера!",
         danceItemTitle: "🕺 Линейный танец (Rivitanssi)",
@@ -945,6 +961,8 @@
       document.getElementById('p2-desc').innerText = t.p2Desc;
       document.getElementById('p4-title').innerText = t.p4Title;
       document.getElementById('p4-desc').innerText = t.p4Desc;
+      document.getElementById('p5-title').innerText = t.p5Title;
+      document.getElementById('p5-desc').innerText = t.p5Desc;
 
       document.getElementById('dance-title').innerText = t.danceTitle;
       document.getElementById('dance-subtitle').innerText = t.danceSubtitle;
@@ -960,6 +978,8 @@
       document.getElementById('presenter-val').innerText = t.presenterVal;
       document.getElementById('kitchen-lbl').innerText = t.kitchenLbl;
       document.getElementById('kitchen-val').innerText = t.kitchenVal;
+      document.getElementById('monitor-lbl').innerText = t.monitorLbl;
+      document.getElementById('monitor-val').innerText = t.monitorVal;
       document.getElementById('info-parking-title').innerText = t.infoParkingTitle;
       document.getElementById('info-parking-desc').innerText = t.infoParkingDesc;
       document.getElementById('info-bring-title').innerText = t.infoBringTitle;
